@@ -1,0 +1,74 @@
+OBJECTS (Gabe)
+
+Game
+- Deck 
+- Player
+	- Role (game objective) (Queen/Duke/2 Rebels)
+		- Character (gives stats/actions) (Nurse/Florence/Queen)
+			- Hand (Array of card objects)
+- Player
+	- Role (game objective) (Queen/Duke/2 Rebels)
+		- Character (gives stats/actions) (Nurse/Florence/Queen)
+			- Hand (Array of card objects)
+- Player
+	- Role (game objective) (Queen/Duke/2 Rebels)
+		- Character (gives stats/actions) (Nurse/Florence/Queen)
+			- Hand (Array of card objects)
+- Player
+	- Role (game objective) (Queen/Duke/2 Rebels)
+		- Character (gives stats/actions) (Nurse/Florence/Queen)
+			- Hand (Array of card objects)
+
+
+---------------------------------------------------------------------------
+
+
+GAME OBJECTIVE
+
+Queen kill rebels
+Rebels kill queen
+Duke helps queen
+
+
+---------------------------------------------------------------------------
+
+GAME INIT (Travis)
+
+
+Start -> Input # of players -> 4 -> Randomly Assign Role for each player -> Randonmly assign Charater to Role -> Give each character their hand > 
+
+
+GAME START (Travis)
+
+Broadcast "player# is queen" to every player -> Display unique win condition to each player
+		
+
+GAME PLAY (Jack)
+
+Loop till game over {
+
+Queen's turn begins
+- Draw 2 cards	- Play a card
+			- Attack any player2
+				- Player2 defends
+					- Drop attack card, Turn is over
+				- Player2 doesnt defend	
+					- P2 drop health, P1 drop attack card, Turn is over
+			- End turn
+				- Discard cards if necessary
+
+Role with next highest initiative goes next	
+
+- Draw 2 cards	- Play a card
+			- Attack any player2
+				- Player2 defends
+					- Drop attack card, Turn is over
+				- Player2 doesnt defend	
+					- P2 drop health, P1 drop attack card, Turn is over
+			- End turn
+				- Discard cards if necessary
+
+
+) Game rver IF when queen is dead OR all rebels are dead
+
+
