@@ -1,0 +1,28 @@
+How to push files onto Github
+
+1) Install Git locally
+2) Start Git Bash
+3) cd to project folder
+4) "git init" - initializes a local git repository (current location will be root)
+5) Create a test file in new local repository location
+
+6) "git remote add origin https://github.com/JackWitek/DownWithTheQueen.git" - Set location
+7) "git config --global user.email "email@email"" - Give youself an identity
+
+
+7) "git status" - Checks for new files
+8) "git add <filename>" - Add a file to the staging environment
+9) "git commit -m "Test commit""
+10) "git checkout -b branchTest2" - Create/switch to new branch (only if you want to)
+11) "git push origin branchTest2" - Push branch to github
+
+
+Merge Branch Into Master and push it -------------------------------
+
+git checkout master
+git pull origin master --allow-unrelated-histories
+git merge branchTest2
+git push origin master
+
+
+"ESC :wq" to exit editor
