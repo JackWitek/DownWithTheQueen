@@ -5,7 +5,7 @@ public class Player {
 	private String playerName;
 	private String ipaddress;
 	private String character;
-	private String role;
+	private String role ="";
 	//Dynamic information
 	private boolean alive;
 	private int city;
