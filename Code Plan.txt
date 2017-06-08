@@ -23,7 +23,7 @@ Game
 ---------------------------------------------------------------------------
 
 
-GAME OBJECTIVE
+GAME OBJECTIV
 
 Queen kill rebels
 Rebels kill queen
@@ -69,6 +69,6 @@ Role with next highest initiative goes next
 				- Discard cards if necessary
 
 
-) Game rver IF when queen is dead OR all rebels are dead
+) Game over IF when queen is dead OR all rebels are dead
 
 

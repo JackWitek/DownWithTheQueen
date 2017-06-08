@@ -5,34 +5,34 @@ import java.util.Scanner;
 
 import data.Player;
 
-public class DownWithTheQueen {
+public class GameInit {
 	private int gameID;
 	private int serverID;
 	private int hostID;
-	private int numPlayers;
+	static int numPlayers;
 	private int numRebels;
 	private int numRoyal;
 	private boolean merc;
 	private int cityCount;
 	private int reqPlayers;
-	Player[] playerList = new Player[numPlayers];
+	static Player[] playerList = new Player[numPlayers];
 
 	public void setPlayerList(Player[] playerList) {
 		this.playerList = playerList;
 	}
 
-	public Player[] getPlayerList() {
+	public static Player[] getPlayerList() {
 		return playerList;
 	}
 
-	public DownWithTheQueen() {
+	public GameInit() {
 		reqPlayers = 4;
 		numPlayers = 4;
 		playerList = new Player[numPlayers];
 	}
 
-	public DownWithTheQueen(int gameID, int serverID, int hostID, int numPlayers, int numRebels, int numRoyal,
-			boolean merc, int cityCount) {
+	public GameInit(int gameID, int serverID, int hostID, int numPlayers, int numRebels, int numRoyal, boolean merc,
+			int cityCount) {
 		super();
 		this.gameID = gameID;
 		this.serverID = serverID;
@@ -107,6 +107,23 @@ public class DownWithTheQueen {
 	public void setCityCount(int cityCount) {
 		this.cityCount = cityCount;
 	}
+
+	////////////////// Jack's Code //////////////////////////////
+
+	/**
+	 * Shorter print function because I'm lazy
+	 * 
+	 * @param line
+	 *            - Object to print
+	 */
+	static void print(Object line) {
+		System.out.println(line);
+	}
+
+	// For debugging purposes
+	static boolean DEBUG = true;
+
+	//////////////////////////////////////////////////////////////
 
 	public void assignRoles() {
 		/**
@@ -187,6 +204,28 @@ public class DownWithTheQueen {
 
 		}
 
+		// Setting test data, Travis can delete this once his stuff works
+		// Should use enum for character and role type
+
+		playerList[0].setCharacter("Medic"); // Doed Medic sound better than
+												// Nurse?
+		playerList[1].setCharacter("Queen");
+		playerList[2].setCharacter("Florence");
+		playerList[3].setCharacter("Florence");
+
+		playerList[0].setRole("Rebel");
+		playerList[1].setRole("Queen");
+		playerList[2].setRole("Duke");
+		playerList[3].setRole("Rebel");
+
+		// Output list of players and their info
+		if (DEBUG) {
+			for (int i = 0; i < numPlayers; i++) {
+				print("Charcter: " + playerList[i].getCharacter() + " -- Role: " + playerList[i].getRole());
+
+			}
+		}
+
 	}
 
 	public void gameInit() {
@@ -209,14 +248,8 @@ public class DownWithTheQueen {
 
 		assignRoles();
 
+		GamePlay.start();
+
 	}
 
-	/////////////////////////// End of Generated Content
-	public static void main(String[] args) {
-		System.out.println("Welcome to DOWN with the QUEEN!!!");
-
-		// Create instance of game object
-		DownWithTheQueen gameInstance = new DownWithTheQueen();
-		gameInstance.gameInit();
-	}
 }

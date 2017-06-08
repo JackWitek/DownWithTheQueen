@@ -47,6 +47,8 @@ public class Player {
 		return role;
 	}
 
+	
+	
 	public void setRole(String role) {
 		this.role = role;
 	}
@@ -98,10 +100,12 @@ public class Player {
 	public void setMaxAtk(int maxAtk) {
 		this.maxAtk = maxAtk;
 	}
-///////////////////////////End of Generated Content
-	public static void main (String[] args){
-		Player Player1 = new Player();
-		System.out.println("Done!");
+
+	// Adding Game actions here for now
+
+	public void drawTwoCards() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

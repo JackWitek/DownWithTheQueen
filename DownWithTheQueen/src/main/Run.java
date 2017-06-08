@@ -1,11 +1,17 @@
 package main;
 
+import game.GameInit;
+
 public class Run {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		System.out.println("Welcome to DOWN with the QUEEN!!! \n");
 
-		System.out.println(" -- Down With The Queen --");
+		// Create instance of game object
+		GameInit gameInstance = new GameInit();
+		gameInstance.gameInit();
+		
+		
 	}
-
+	
 }
