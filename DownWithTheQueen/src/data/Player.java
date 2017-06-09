@@ -1,4 +1,5 @@
 package data;
+import Cards.*;
 
 public class Player {
 	//Static player info
@@ -8,11 +9,12 @@ public class Player {
 	private String role ="";
 	//Dynamic information
 	private boolean alive;
-	private int city;
-	private int hand;
+	private String equipment;
+	private String[] hand;
 	private int health;
 	private int maxHealth;
 	private int maxAtk;
+	private int dmgMod;
 	
 	
 	public Player() {
@@ -47,8 +49,6 @@ public class Player {
 		return role;
 	}
 
-	
-	
 	public void setRole(String role) {
 		this.role = role;
 	}
@@ -61,19 +61,19 @@ public class Player {
 		this.alive = alive;
 	}
 
-	public int getCity() {
-		return city;
+	public String getEquipment() {
+		return equipment;
 	}
 
-	public void setCity(int city) {
-		this.city = city;
+	public void setEquipment(String equipment) {
+		this.equipment = equipment;
 	}
 
-	public int getHand() {
+	public String[] getHand() {
 		return hand;
 	}
 
-	public void setHand(int hand) {
+	public void setHand(String[] hand) {
 		this.hand = hand;
 	}
 
@@ -100,12 +100,31 @@ public class Player {
 	public void setMaxAtk(int maxAtk) {
 		this.maxAtk = maxAtk;
 	}
+	
+	public int getDmgMod() {
+		return dmgMod;
+	}
 
+	public void setDmgMod(int dmgMod) {
+		this.dmgMod = dmgMod;
+	}
 	// Adding Game actions here for now
 
 	public void drawTwoCards() {
 		// TODO Auto-generated method stub
 		
+	}
+	//////////////////////Card Actions
+	public boolean hasDodge(Player target){
+	//Checks if Player has dodge
+	//if target.hand.contains(Dodge){
+		return true;
+		//}
+	//else return false;
+	}
+	
+	public void discard(Card card){
+		//player discards a card from their hand
 	}
 	
 }
