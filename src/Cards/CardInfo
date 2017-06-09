@@ -1,0 +1,11 @@
+Card Code Structure:
+
+All Cards have base attributes:
+a) cardName, the name of the card
+b) cardType: 
+		1) Action, a move a single player initiates
+		2) Equipment, a tool which is attached to the player
+		3) Global, a move which affects all players
+		
+To create a new card simply create a new Java class and extend the card class. 
+Implement the card methods as (class).activate().
