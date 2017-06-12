@@ -1,5 +1,5 @@
 package data;
-import Cards.*;
+//import Cards.*;
 
 public class Player {
 	//Static player info
@@ -123,8 +123,8 @@ public class Player {
 	//else return false;
 	}
 	
-	public void discard(Card card){
+//	public void discard(Card card){
 		//player discards a card from their hand
-	}
+	//}
 	
 }

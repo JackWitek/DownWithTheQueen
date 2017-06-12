@@ -125,6 +125,24 @@ public class GameInit {
 
 	//////////////////////////////////////////////////////////////
 
+	// debug method until i iron out role assignment
+	public void finalRoleCheck(int rebelMax, int crownMax) {
+		int numberOfRebels = 0;
+		int numberofCrown = 1;
+
+		for (int i = 0; i < playerList.length; i++) {
+			if (playerList[i].getRole() == "Rebel") {
+				numberOfRebels++;
+			}
+			if (playerList[i].getRole() == "Duke") {
+				numberofCrown++;
+			}
+		}
+
+		System.out.println("number of rebels: " + numberOfRebels + " number of crown: " + numberofCrown
+				+ " number of rebelMax: " + rebelMax + " number of crownMax " + crownMax);
+	}
+
 	public void assignRoles() {
 		/**
 		 * thinking of either assigning a bunch of values to array and A ---
@@ -141,7 +159,7 @@ public class GameInit {
 		 * queenMax - placeholder minimum for time being rebelTeamMin and
 		 * theCrownMin - ways of forcing balancing/help with assigning roles
 		 * 
-		 * use mod to check for uneven and if uneven give rebels +1
+		 * a use mod to check for uneven and if uneven give rebels +1
 		 */
 
 		int x = 0; //
@@ -149,6 +167,9 @@ public class GameInit {
 		int rebelTeamMin = numPlayers / 2;
 		int theCrownMin = numPlayers / 2;
 		int index = 0;
+		int assignedC = 0;
+		int assignedR = 0;
+
 		if (numPlayers % 2 != 0) {
 			rebelTeamMin += 1;
 		}
@@ -189,34 +210,48 @@ public class GameInit {
 
 		}
 
-		// assign crown
-		for (int c = 0; c < theCrownMin; c++) {
+		// assign crown which is - 1 for queen
+		do {
+			index = new Random().nextInt(numPlayers);
 
-			do {
-				index = new Random().nextInt(numPlayers);
+			if (playerList[index].getRole().isEmpty()) {
 
-				if (playerList[index].getRole().isEmpty()) {
+				playerList[index].setRole("Duke");
+				assignedC++;
+				System.out.println("\nAssigned " + playerList[index] + " crown role with assignedC of " + theCrownMin
+						+ " and a index of " + index + "\n");
+			}
 
-					playerList[index].setRole("Duke");
-				}
+		} while (assignedC < theCrownMin - queenMax);
 
-			} while (playerList[index].getRole().isEmpty());
+		// assign rebels
+		do {
+			index = new Random().nextInt(numPlayers);
 
-		}
+			if (playerList[index].getRole().isEmpty()) {
+
+				playerList[index].setRole("Rebel");
+				assignedR++;
+				System.out.println("\nAssigned " + playerList[index] + " rebel role with assignedR of " + assignedR
+						+ " and a index of " + index + "\n");
+			}
+
+		} while (assignedR < rebelTeamMin);
 
 		// Setting test data, Travis can delete this once his stuff works
 		// Should use enum for character and role type
 
 		playerList[0].setCharacter("Medic"); // Doed Medic sound better than
+												// ----d000d it does
 												// Nurse?
 		playerList[1].setCharacter("Queen");
 		playerList[2].setCharacter("Florence");
 		playerList[3].setCharacter("Florence");
 
-		playerList[0].setRole("Rebel");
-		playerList[1].setRole("Queen");
-		playerList[2].setRole("Duke");
-		playerList[3].setRole("Rebel");
+		// playerList[0].setRole("Rebel");
+		// playerList[1].setRole("Queen");
+		// playerList[2].setRole("Duke");
+		// playerList[3].setRole("Rebel");
 
 		// Output list of players and their info
 		if (DEBUG) {
