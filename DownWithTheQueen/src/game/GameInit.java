@@ -1,5 +1,7 @@
 package game;
 
+import data.Character;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -125,22 +127,52 @@ public class GameInit {
 
 	//////////////////////////////////////////////////////////////
 
-	// debug method until i iron out role assignment
-	public void finalRoleCheck(int rebelMax, int crownMax) {
-		int numberOfRebels = 0;
-		int numberofCrown = 1;
+	public void assignChars() {
+		Character medic1 = new Character("Medic");
+		Character medic2 = new Character("Medic");
+		Character medic3 = new Character("Medic");
+		Character medic4 = new Character("Medic");
 
-		for (int i = 0; i < playerList.length; i++) {
-			if (playerList[i].getRole() == "Rebel") {
-				numberOfRebels++;
-			}
-			if (playerList[i].getRole() == "Duke") {
-				numberofCrown++;
+		Character[] rebelChars = new Character[4];
+		rebelChars[0] = medic1;
+		rebelChars[1] = medic2;
+		rebelChars[2] = medic3;
+		rebelChars[3] = medic4;
+
+		int assignedR = 0;
+
+		// asign chars to each char based on role
+		for (int i = 0; i < numPlayers; i++) {
+			int index = 0;
+			// if queen give them the queen char
+			if (playerList[i].getRole() == "Queen") {
+				playerList[i].setCharacter("Queen");
+				// if rebel roll a random character in the rebel char array and
+				// assign them to it
+				// if the character is taken
+			} else if (playerList[i].getRole() == "Rebel") {
+
+				index = new Random().nextInt(rebelChars.length - 1);
+
+				if (rebelChars[index].getCharTaken() == false) {
+					playerList[i].setCharacter(rebelChars[index].toString());
+					rebelChars[index].setCharTaken(true);
+					System.out.println("Assigned character " + rebelChars[index].getName());
+				} else {
+					System.out.println("Character " + rebelChars[index].getName() + " is taken!");
+					i--;
+				}
+
 			}
 		}
 
-		System.out.println("number of rebels: " + numberOfRebels + " number of crown: " + numberofCrown
-				+ " number of rebelMax: " + rebelMax + " number of crownMax " + crownMax);
+		if (DEBUG) {
+			for (int i = 0; i < numPlayers; i++) {
+				print("Charcter: " + playerList[i].getCharacter() + " -- Role: " + playerList[i].getRole());
+
+			}
+		}
+
 	}
 
 	public void assignRoles() {
@@ -222,7 +254,10 @@ public class GameInit {
 						+ " and a index of " + index + "\n");
 			}
 
-		} while (assignedC < theCrownMin - queenMax);
+		} while (assignedC < theCrownMin - queenMax); // 1 as queen is
+														// technically crown but
+														// -1 for assignment
+														// purposes
 
 		// assign rebels
 		do {
@@ -241,12 +276,9 @@ public class GameInit {
 		// Setting test data, Travis can delete this once his stuff works
 		// Should use enum for character and role type
 
-		playerList[0].setCharacter("Medic"); // Doed Medic sound better than
-												// ----d000d it does
-												// Nurse?
-		playerList[1].setCharacter("Queen");
-		playerList[2].setCharacter("Florence");
-		playerList[3].setCharacter("Florence");
+		// playerList[1].setCharacter("Queen");
+		// playerList[2].setCharacter("Florence");
+		// playerList[3].setCharacter("Florence");
 
 		// playerList[0].setRole("Rebel");
 		// playerList[1].setRole("Queen");
@@ -254,12 +286,6 @@ public class GameInit {
 		// playerList[3].setRole("Rebel");
 
 		// Output list of players and their info
-		if (DEBUG) {
-			for (int i = 0; i < numPlayers; i++) {
-				print("Charcter: " + playerList[i].getCharacter() + " -- Role: " + playerList[i].getRole());
-
-			}
-		}
 
 	}
 
@@ -282,7 +308,7 @@ public class GameInit {
 		// }
 
 		assignRoles();
-
+		assignChars();
 		GamePlay.start();
 
 	}
